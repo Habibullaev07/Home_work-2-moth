@@ -86,7 +86,7 @@ customer_manager.create_table()
 customer_manager.add_customer("jamshid", "Zhabibullaev07@gmail.com")
 customer_manager.add_customer("ali", "ali@gmaiil.com")
 customer_manager.add_customer("farid", "farid@gmail.com")
-customer_manager.add_customer("dilshod", "dilshod@gmail.com")
+customer_manager.add_customer("dilsho", "dilshod@gmail.com")
 
 print(user_manager.get_user_by_id(1))
 print(db_manager.find_user_by_name("jamshid"))
