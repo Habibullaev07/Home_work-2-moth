@@ -96,4 +96,4 @@ db_manager.connection.commit()
 db_manager.connection.execute("INSERT INTO users (username, role) VALUES (?, ?)", ("sardor", "admin"))
 db_manager.connection.commit()
 
-db_manager.close_connection()
+db_manager.close_connection
