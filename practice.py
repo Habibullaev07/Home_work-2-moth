@@ -1,4 +1,3 @@
-
 import sqlite3
 
 class DatabaseManager:
@@ -17,15 +16,6 @@ class DatabaseManager:
         cursor = self.connection.cursor()
         cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
         return cursor.fetchone()
-
-    def execute_transaction(self, queries):
-        try:
-            with self.connection:
-                cursor = self.connection.cursor()
-                for query, params in queries:
-                    cursor.execute(query, params)
-        except sqlite3.Error as e:
-            print(f"Ошибка транзакции: {e}")
 
 class User:
     def __init__(self, db_manager):
@@ -49,11 +39,6 @@ class User:
         cursor = self.db_manager.connection.cursor()
         cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
         return cursor.fetchone()
-
-    def delete_user(self, user_id):
-        cursor = self.db_manager.connection.cursor()
-        cursor.execute("DELETE FROM users WHERE id = ?", (user_id,))
-        self.db_manager.connection.commit()
 
 class Admin(User):
     def create_table(self):
@@ -106,10 +91,9 @@ customer_manager.add_customer("dilshod", "dilshod@gmail.com")
 print(user_manager.get_user_by_id(1))
 print(db_manager.find_user_by_name("jamshid"))
 
-queries = [
-    ("INSERT INTO users (username, role) VALUES (?, ?)", ("amir", "customer")),
-    ("INSERT INTO users (username, role) VALUES (?, ?)", ("sardor", "addmin"))
-]
-db_manager.execute_transaction(queries)
+db_manager.connection.execute("INSERT INTO users (username, role) VALUES (?, ?)", ("amir", "customer"))
+db_manager.connection.commit()
+db_manager.connection.execute("INSERT INTO users (username, role) VALUES (?, ?)", ("sardor", "admin"))
+db_manager.connection.commit()
 
 db_manager.close_connection()
