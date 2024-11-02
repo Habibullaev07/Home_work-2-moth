@@ -59,12 +59,11 @@ class Admin(User):
 
 class Customer(User):
     def init(self, db_manager, name, email, address):
-        """Инициализирует клиента с адресом."""
+
         super().init(db_manager, name, email)
         self.address = address
 
     def add_customer(self):
-        """Добавляет нового клиента в таблицу customers."""
         cursor = self.db_manager.open_connection().cursor()
         cursor.execute("INSERT INTO customers (name, email, address) VALUES (?, ?, ?)", 
                        (self.name, self.email, self.address))
