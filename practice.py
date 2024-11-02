@@ -85,7 +85,7 @@ class Customer(User):
         cursor.execute("INSERT INTO customers (username, email) VALUES (?, ?)", (username, email))
         self.db_manager.connection.commit()
 
-db_manager = DatabaseManager("example.db")
+db_manager = DatabaseManager("manager.db")
 db_manager.open_connection()
 
 user_manager = User(db_manager)
