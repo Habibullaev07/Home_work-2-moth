@@ -108,7 +108,7 @@ print(db_manager.find_user_by_name("jamshid"))
 
 queries = [
     ("INSERT INTO users (username, role) VALUES (?, ?)", ("amir", "customer")),
-    ("INSERT INTO users (username, role) VALUES (?, ?)", ("sardor", "admin"))
+    ("INSERT INTO users (username, role) VALUES (?, ?)", ("sardor", "addmin"))
 ]
 db_manager.execute_transaction(queries)
 
