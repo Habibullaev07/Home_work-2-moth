@@ -99,7 +99,7 @@ admin_manager.add_admin("admin_jamshid", "all_permissions")
 customer_manager = Customer(db_manager)
 customer_manager.create_table()
 customer_manager.add_customer("jamshid", "Zhabibullaev07@gmail.com")
-customer_manager.add_customer("ali", "ali@gamail.com")
+customer_manager.add_customer("ali", "ali@gmaiil.com")
 customer_manager.add_customer("farid", "farid@gmail.com")
 customer_manager.add_customer("dilshod", "dilshod@gmail.com")
 
